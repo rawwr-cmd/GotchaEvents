@@ -4,7 +4,7 @@ const DUMMY_EVENTS = [
     title: "Windows For The Nerds",
     description:
       "In this live event, we are going to get the basics on some advanced features of the window operating system",
-    location: "New Delhi, India, 800002",
+    location: "New Delhi India, 800002",
     date: "2021-5-12",
     image: "images/dell-event-details.jpg",
     isFeatured: false,
@@ -13,7 +13,7 @@ const DUMMY_EVENTS = [
     id: "e2",
     title: "Poster-making",
     description: "Poster-making is a great way to express your creativity",
-    location: "Patna, India, 800001",
+    location: "Patna India, 800001",
     date: "2021-5-12",
     image: "images/microsoft-event-details.jpg",
     isFeatured: true,
@@ -24,7 +24,7 @@ const DUMMY_EVENTS = [
     description:
       "Email-marketing is to make marketing campaign easier and to send the status of your business",
 
-    location: "Raipur India, 800004",
+    location: "Chandani Chowk Street 10, 82345 New Delhi",
     date: "2021-5-12",
     image: "images/mailchimp-event-details.jpg",
     isFeatured: true,

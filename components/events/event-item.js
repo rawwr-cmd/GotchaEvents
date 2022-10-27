@@ -1,5 +1,9 @@
-import Link from "next/link";
-import Image from "next/image";
+import Button from "../ui/button";
+import classes from "./event-item.module.css";
+import AddressIcon from "../icons/address-icon";
+import ArrowRight from "../icons/arrow-right";
+import DateIcon from "../icons/date-icon";
+
 const EventItem = ({ title, image, date, location, id }) => {
   const humanReadableDate = new Date(date).toLocaleDateString("en-US", {
     day: "numeric",
@@ -8,23 +12,29 @@ const EventItem = ({ title, image, date, location, id }) => {
   });
   const formattedAddress = location.replace(", ", "\n");
   const exploreLink = `/events/${id}`;
+
   return (
-    <li>
-      <picture>
-        <img src={"/" + image} alt={title} />
-      </picture>
-      <div>
-        <div>
+    <li className={classes.item}>
+      <img src={"/" + image} alt={title} />
+      <div className={classes.content}>
+        <div className={classes.summary}>
           <h2>{title}</h2>
-          <div>
+          <div className={classes.date}>
+            <DateIcon />
             <time>{humanReadableDate}</time>
           </div>
-          <div>
+          <div className={classes.address}>
+            <AddressIcon />
             <address>{formattedAddress}</address>
           </div>
         </div>
-        <div>
-          <Link href={exploreLink}>Explore Events</Link>
+        <div className={classes.actions}>
+          <Button link={exploreLink}>
+            <span>Explore Events</span>
+            <span className={classes.icon}>
+              <ArrowRight />
+            </span>
+          </Button>
         </div>
       </div>
     </li>
