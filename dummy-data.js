@@ -14,7 +14,7 @@ const DUMMY_EVENTS = [
     title: "Poster-making",
     description: "Poster-making is a great way to express your creativity",
     location: "Patna India, 800001",
-    date: "2021-5-12",
+    date: "2021-6-12",
     image: "images/microsoft-event-details.jpg",
     isFeatured: true,
   },
@@ -25,7 +25,7 @@ const DUMMY_EVENTS = [
       "Email-marketing is to make marketing campaign easier and to send the status of your business",
 
     location: "Chandani Chowk Street 10, 82345 New Delhi",
-    date: "2021-5-12",
+    date: "2021-7-12",
     image: "images/mailchimp-event-details.jpg",
     isFeatured: true,
   },

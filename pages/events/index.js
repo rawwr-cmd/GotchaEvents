@@ -7,7 +7,6 @@ import EventList from "../../components/events/event-list";
 
 const AllEventsPage = () => {
   const router = useRouter();
-
   const events = getAllEvents();
 
   const findEventshandler = (year, month) => {
