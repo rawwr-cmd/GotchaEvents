@@ -3,7 +3,7 @@ export const getAllEvents = async () => {
     "https://client-side-data-fetchin-ebef2-default-rtdb.firebaseio.com/events.json"
   );
   const data = await response.json();
-  console.log(data);
+  //   console.log(data);
 
   const transformedData = [];
 
@@ -20,4 +20,9 @@ export const getAllEvents = async () => {
 export const getFeaturedEvents = async () => {
   const allEvents = await getAllEvents();
   return allEvents.filter((event) => event.isFeatured);
+};
+
+export const getEventById = async (id) => {
+  const allEvents = await getAllEvents();
+  return allEvents.find((event) => event.id === id);
 };

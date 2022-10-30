@@ -1,24 +1,19 @@
 import { Fragment } from "react";
-import { useRouter } from "next/router";
-import { getEventById } from "../../dummy-data";
+import { getEventById, getFeaturedEvents } from "../../helpers/api-util";
 
 import EventSummary from "../../components/event-detail/event-summary";
 import EventLogistics from "../../components/event-detail/event-logistics";
 import EventContent from "../../components/event-detail/event-content";
-import ErrorAlert from "../../components/ui/error-alert";
 
-const EventDetails = () => {
-  const router = useRouter();
-  const eventId = router.query.eventid;
-
-  const event = getEventById(eventId);
+const EventDetails = ({ selectedEvent }) => {
+  const event = selectedEvent;
   // console.log(event);
 
   if (!event) {
     return (
-      <ErrorAlert>
+      <div className="center">
         <p>No event found!</p>
-      </ErrorAlert>
+      </div>
     );
   }
 
@@ -36,6 +31,38 @@ const EventDetails = () => {
       </EventContent>
     </Fragment>
   );
+};
+
+export const getStaticProps = async (context) => {
+  const { params } = context;
+  const { eventid } = params;
+
+  const event = await getEventById(eventid);
+  // console.log(event);
+
+  // if (!event) {
+  //   return {
+  //     notFound: true, //404
+  //   };
+  // }
+
+  return {
+    props: {
+      selectedEvent: event,
+    },
+    revalidate: 30,
+  };
+};
+
+export const getStaticPaths = async () => {
+  const events = await getFeaturedEvents();
+  // console.log(events);
+  const paths = events.map((event) => ({ params: { eventid: event.id } }));
+  return {
+    paths: paths,
+    // fallback: true, //there are more pages to render, but we don't know how many
+    fallback: "blocking", //nextjs will not do anything until it generates rhe page
+  };
 };
 
 export default EventDetails;
