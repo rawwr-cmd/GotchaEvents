@@ -1,4 +1,4 @@
-const Date = () => {
+const DateIcon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17,4 +17,4 @@ const Date = () => {
   );
 };
 
-export default Date;
+export default DateIcon;
