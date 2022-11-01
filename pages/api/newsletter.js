@@ -1,4 +1,6 @@
-const handler = (req, res) => {
+import { MongoClient } from "mongodb";
+
+const handler = async (req, res) => {
   if (req.method === "POST") {
     const { email } = req.body;
 
@@ -7,7 +9,16 @@ const handler = (req, res) => {
       return;
     }
 
-    console.log(email);
+    // store it in a database
+    const client = await MongoClient.connect(
+      "mongodb+srv://rawwr:kCIexrkEqPj0UFbf@cluster0.eyknml1.mongodb.net/newsletters?retryWrites=true&w=majority"
+    );
+    const db = client.db();
+
+    await db.collection("newsletters").insertOne({ email: email });
+
+    // console.log(email);
+    client.close();
     res.status(201).json({ message: "got you scooped!" });
   }
 };
